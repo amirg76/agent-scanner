@@ -1,0 +1,10 @@
+{
+  "dir": "targets/mattpocock_skills",
+  "filesSeen": 169,
+  "plugins": [
+    "mattpocock-skills"
+  ],
+  "findings": [],
+  "errors": [],
+  "skipped": []
+}

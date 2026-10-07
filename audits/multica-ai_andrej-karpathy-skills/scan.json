@@ -1,0 +1,10 @@
+{
+  "dir": "targets/multica-ai_andrej-karpathy-skills",
+  "filesSeen": 9,
+  "plugins": [
+    "andrej-karpathy-skills"
+  ],
+  "findings": [],
+  "errors": [],
+  "skipped": []
+}

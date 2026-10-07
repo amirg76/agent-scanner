@@ -1,0 +1,36 @@
+{
+  "dir": "targets/gsd-build_get-shit-done",
+  "filesSeen": 1854,
+  "plugins": [],
+  "findings": [
+    {
+      "kind": "installer",
+      "target": "~/.claude",
+      "backup": true,
+      "traced": true,
+      "level": "info",
+      "file": "bin/install.js",
+      "why": "Writes into the agent config folder; backup-related code is present (heuristic: confirm by reading the script)."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude",
+      "backup": false,
+      "traced": true,
+      "level": "attention",
+      "file": "get-shit-done/bin/lib/install-profiles.cjs",
+      "why": "Writes into the agent config folder and no backup code was found (heuristic): existing files of the same name are likely replaced."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude/skills",
+      "backup": false,
+      "traced": true,
+      "level": "attention",
+      "file": "get-shit-done/bin/lib/install-profiles.cjs",
+      "why": "Writes into the agent config folder and no backup code was found (heuristic): existing files of the same name are likely replaced."
+    }
+  ],
+  "errors": [],
+  "skipped": []
+}

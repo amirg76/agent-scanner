@@ -1,0 +1,8 @@
+{
+  "description": "Plugin .mcp.json without the mcpServers wrapper. @latest is not a pin.",
+  "exact": true,
+  "findings": [
+    { "kind": "mcp", "server": "local-demo", "pinned": false, "level": "attention", "file": ".mcp.json" },
+    { "kind": "mcp", "server": "remote-demo", "remote": "https://mcp.example.invalid/mcp", "level": "info", "file": ".mcp.json" }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "repo": "anthropics/skills",
+  "commit": "34040c9c568585f6929bedeaad110ad08f079624",
+  "commitDate": "2026-09-10",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 419,
+  "plugins": 5,
+  "summary": {
+    "total": 0,
+    "byLevel": {
+      "info": 0,
+      "attention": 0,
+      "high": 0
+    },
+    "byKind": {}
+  }
+}

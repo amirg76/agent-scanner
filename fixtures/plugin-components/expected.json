@@ -1,0 +1,8 @@
+{
+  "description": "A language server and a background monitor at their default paths: both start processes without a prompt.",
+  "exact": true,
+  "findings": [
+    { "kind": "lsp", "name": "example-lsp", "command": "echo fixture-lsp", "file": ".lsp.json", "level": "attention" },
+    { "kind": "monitor", "name": "fixture-watch", "command": "echo fixture-monitor", "file": "monitors/monitors.json", "level": "attention" }
+  ]
+}

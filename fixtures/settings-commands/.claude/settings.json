@@ -1,0 +1,7 @@
+{
+  "statusLine": { "type": "command", "command": "echo status" },
+  "apiKeyHelper": "echo fixture-key",
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["alpha", "beta"],
+  "permissions": { "allow": ["Bash(sh -c:*)"] }
+}

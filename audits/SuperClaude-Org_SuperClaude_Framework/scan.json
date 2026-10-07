@@ -1,0 +1,113 @@
+{
+  "dir": "targets/SuperClaude-Org_SuperClaude_Framework",
+  "filesSeen": 409,
+  "plugins": [
+    "superclaude"
+  ],
+  "findings": [
+    {
+      "kind": "installer",
+      "target": "~/.claude",
+      "mentions": [
+        "~/.claude/commands"
+      ],
+      "backup": null,
+      "traced": false,
+      "level": "attention",
+      "file": "install.sh",
+      "why": "Installer that targets the agent config folder; the writes happen in other files and were not traced, so a backup step could not be confirmed."
+    },
+    {
+      "kind": "lifecycle",
+      "script": "postinstall",
+      "command": "node ./bin/install.js",
+      "level": "attention",
+      "file": "package.json",
+      "why": "Runs automatically on npm install (postinstall)."
+    },
+    {
+      "kind": "mcp",
+      "server": "context7",
+      "command": "npx -y @upstash/context7-mcp@latest",
+      "package": "@upstash/context7-mcp@latest",
+      "pinned": false,
+      "level": "attention",
+      "file": "plugins/superclaude/.mcp.json",
+      "why": "Fetched from a registry with no version: every future release runs without review. Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions.",
+      "plugin": "superclaude"
+    },
+    {
+      "kind": "mcp",
+      "server": "sequential-thinking",
+      "command": "npx -y @modelcontextprotocol/server-sequential-thinking",
+      "package": "@modelcontextprotocol/server-sequential-thinking",
+      "pinned": false,
+      "level": "attention",
+      "file": "plugins/superclaude/.mcp.json",
+      "why": "Fetched from a registry with no version: every future release runs without review. Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions.",
+      "plugin": "superclaude"
+    },
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": "plugins/superclaude/hooks/hooks.json",
+      "command": "${CLAUDE_PLUGIN_ROOT}/scripts/session-init.sh",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything.",
+      "plugin": "superclaude"
+    },
+    {
+      "kind": "hook",
+      "event": "Stop",
+      "level": "attention",
+      "file": "plugins/superclaude/hooks/hooks.json",
+      "hookType": "prompt",
+      "why": "Runs on every Stop event.",
+      "plugin": "superclaude"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "plugins/superclaude/hooks/hooks.json",
+      "hookType": "prompt",
+      "why": "Runs on PostToolUse for tools matching \"Write|Edit\".",
+      "matcher": "Write|Edit",
+      "plugin": "superclaude"
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude",
+      "mentions": [
+        "~/.claude/agents",
+        "~/.claude/commands"
+      ],
+      "backup": null,
+      "traced": false,
+      "level": "attention",
+      "file": "src/superclaude/cli/install_commands.py",
+      "why": "Installer that targets the agent config folder; the writes happen in other files and were not traced, so a backup step could not be confirmed."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude/skills",
+      "backup": false,
+      "traced": true,
+      "level": "attention",
+      "file": "src/superclaude/cli/install_skill.py",
+      "why": "Writes into the agent config folder and no backup code was found (heuristic): existing files of the same name are likely replaced."
+    },
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": "src/superclaude/hooks/hooks.json",
+      "command": "./scripts/session-init.sh",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything."
+    }
+  ],
+  "errors": [],
+  "skipped": []
+}

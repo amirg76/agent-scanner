@@ -1,0 +1,22 @@
+{
+  "dir": "targets/obra_superpowers",
+  "filesSeen": 231,
+  "plugins": [
+    "superpowers"
+  ],
+  "findings": [
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "\"${CLAUDE_PLUGIN_ROOT}/hooks/run-hook.cmd\" session-start",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything.",
+      "matcher": "startup|clear|compact",
+      "plugin": "superpowers"
+    }
+  ],
+  "errors": [],
+  "skipped": []
+}

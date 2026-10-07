@@ -1,0 +1,222 @@
+{
+  "dir": "targets/mksglu_context-mode",
+  "filesSeen": 599,
+  "plugins": [
+    "context-mode"
+  ],
+  "findings": [
+    {
+      "kind": "mcp",
+      "server": "context-mode",
+      "command": "node ${CLAUDE_PLUGIN_ROOT}/start.mjs",
+      "pinned": null,
+      "level": "info",
+      "file": ".claude-plugin/plugin.json",
+      "why": "Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions.",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "configs/antigravity-cli/hooks/hooks.json",
+      "command": "context-mode hook antigravity-cli pretooluse",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"run_command|view_file|grep_search|web_fetch|read_url_content\".",
+      "matcher": "run_command|view_file|grep_search|web_fetch|read_url_content"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "configs/antigravity-cli/hooks/hooks.json",
+      "command": "context-mode hook antigravity-cli posttooluse",
+      "hookType": "command",
+      "why": "Runs on every PostToolUse event, for every tool.",
+      "matcher": ""
+    },
+    {
+      "kind": "hook",
+      "event": "Stop",
+      "level": "attention",
+      "file": "configs/antigravity-cli/hooks/hooks.json",
+      "command": "context-mode hook antigravity-cli stop",
+      "hookType": "command",
+      "why": "Runs on every Stop event.",
+      "matcher": ""
+    },
+    {
+      "kind": "mcp",
+      "server": "context-mode",
+      "command": "context-mode",
+      "pinned": null,
+      "level": "info",
+      "file": "configs/copilot-cli/.mcp.json",
+      "why": "Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions."
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/posttooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"Bash|Read|Write|Edit|NotebookEdit|Glob|Grep|TodoWrite|TaskCreate|TaskUpdate|EnterPlanMode|ExitPlanMode|Skill|Agent|AskU…\".",
+      "matcher": "Bash|Read|Write|Edit|NotebookEdit|Glob|Grep|TodoWrite|TaskCreate|TaskUpdate|EnterPlanMode|ExitPlanMode|Skill|Agent|AskUserQuestion|EnterWorktree|mcp__",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreCompact",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/precompact.mjs\"",
+      "hookType": "command",
+      "why": "Runs on every PreCompact event.",
+      "matcher": "",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"Bash\".",
+      "matcher": "Bash",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"WebFetch\".",
+      "matcher": "WebFetch",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"Read\".",
+      "matcher": "Read",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"Grep\".",
+      "matcher": "Grep",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"Agent\".",
+      "matcher": "Agent",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"mcp__plugin_context-mode_context-mode__ctx_execute\".",
+      "matcher": "mcp__plugin_context-mode_context-mode__ctx_execute",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"mcp__plugin_context-mode_context-mode__ctx_execute_file\".",
+      "matcher": "mcp__plugin_context-mode_context-mode__ctx_execute_file",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"mcp__plugin_context-mode_context-mode__ctx_batch_execute\".",
+      "matcher": "mcp__plugin_context-mode_context-mode__ctx_batch_execute",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/pretooluse.mjs\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"mcp__\".",
+      "matcher": "mcp__",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "UserPromptSubmit",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/userpromptsubmit.mjs\"",
+      "hookType": "command",
+      "why": "Runs on every prompt the user sends and can add text to it.",
+      "matcher": "",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/sessionstart.mjs\"",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything.",
+      "matcher": "",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "hook",
+      "event": "Stop",
+      "level": "attention",
+      "file": "hooks/hooks.json",
+      "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/stop.mjs\"",
+      "hookType": "command",
+      "why": "Runs on every Stop event.",
+      "matcher": "",
+      "plugin": "context-mode"
+    },
+    {
+      "kind": "lifecycle",
+      "script": "postinstall",
+      "command": "node scripts/postinstall.mjs",
+      "level": "attention",
+      "file": "package.json",
+      "why": "Runs automatically on npm install (postinstall)."
+    }
+  ],
+  "errors": [],
+  "skipped": []
+}

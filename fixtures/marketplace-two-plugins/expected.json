@@ -1,0 +1,7 @@
+{
+  "description": "A marketplace with two plugins: the finding is attributed to the plugin that declares it, by manifest name.",
+  "exact": true,
+  "findings": [
+    { "kind": "hook", "event": "Stop", "plugin": "busy-plugin", "file": "plugins/busy/hooks/hooks.json" }
+  ]
+}

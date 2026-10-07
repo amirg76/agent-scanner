@@ -1,0 +1,7 @@
+{
+  "description": "Same server, version pinned. Still listed, lower level.",
+  "exact": true,
+  "findings": [
+    { "kind": "mcp", "server": "demo", "pinned": true, "level": "info", "file": ".mcp.json" }
+  ]
+}

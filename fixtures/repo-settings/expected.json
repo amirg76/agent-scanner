@@ -1,0 +1,8 @@
+{
+  "description": "Project settings that pre-approve any shell command, plus a hook after every file edit. Read-only allow is not reported.",
+  "exact": true,
+  "findings": [
+    { "kind": "permission", "rule": "Bash(*)", "level": "high", "file": ".claude/settings.json" },
+    { "kind": "hook", "event": "PostToolUse", "matcher": "Write|Edit", "level": "attention", "file": ".claude/settings.json" }
+  ]
+}

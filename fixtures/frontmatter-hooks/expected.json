@@ -1,0 +1,9 @@
+{
+  "description": "Hooks in skill and subagent frontmatter (quoted \"hooks\" key, a comment after a quoted value, if and once fields). A subagent's Stop is reported as SubagentStop, as Claude Code converts it. Markdown without hooks in its frontmatter produces nothing.",
+  "exact": true,
+  "findings": [
+    { "kind": "hook", "event": "PreToolUse", "matcher": "Bash", "condition": "Bash(git *)", "frontmatter": "skill", "plugin": "fm-plugin", "file": "skills/demo/SKILL.md", "command": "echo fixture-skill-hook" },
+    { "kind": "hook", "event": "SessionStart", "once": true, "frontmatter": "skill", "plugin": "fm-plugin", "file": "skills/demo/SKILL.md", "command": "echo fixture-once" },
+    { "kind": "hook", "event": "SubagentStop", "declaredEvent": "Stop", "frontmatter": "subagent", "plugin": "fm-plugin", "file": "agents/helper.md", "command": "echo fixture-agent-hook" }
+  ]
+}

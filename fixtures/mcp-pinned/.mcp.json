@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "demo": {
+      "command": "npx",
+      "args": ["-y", "example-fixture-mcp@1.2.3"]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "description": "Same installer with a backup step: still listed, lower level.",
+  "exact": true,
+  "findings": [
+    { "kind": "installer", "target": "~/.claude/skills", "backup": true, "level": "info", "file": "install.sh" }
+  ]
+}

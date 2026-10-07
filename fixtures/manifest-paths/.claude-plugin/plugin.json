@@ -1,0 +1,7 @@
+{
+  "name": "custom-paths",
+  "version": "1.0.0",
+  "description": "Fixture: hook and MCP configs at non-default paths, referenced from the manifest.",
+  "hooks": "./config/my-hooks.json",
+  "mcpServers": ["./config/servers.json"]
+}

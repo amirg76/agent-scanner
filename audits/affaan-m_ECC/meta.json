@@ -1,0 +1,22 @@
+{
+  "repo": "affaan-m/ECC",
+  "commit": "bf70150eb2df8070024e5bdf08e4aa08959e2735",
+  "commitDate": "2026-09-21",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 3734,
+  "plugins": 1,
+  "summary": {
+    "total": 29,
+    "byLevel": {
+      "info": 2,
+      "attention": 27,
+      "high": 0
+    },
+    "byKind": {
+      "mcp": 1,
+      "installer": 4,
+      "hook": 24
+    }
+  }
+}

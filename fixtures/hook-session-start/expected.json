@@ -1,0 +1,7 @@
+{
+  "description": "One hook at session start, before the user types anything.",
+  "exact": true,
+  "findings": [
+    { "kind": "hook", "event": "SessionStart", "level": "attention", "file": "hooks/hooks.json" }
+  ]
+}

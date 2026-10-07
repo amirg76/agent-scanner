@@ -1,0 +1,21 @@
+{
+  "repo": "nextlevelbuilder/ui-ux-pro-max-skill",
+  "commit": "dcc40ff5133ef78276117db0cc34e7b83cc8aeba",
+  "commitDate": "2026-09-21",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 680,
+  "plugins": 1,
+  "summary": {
+    "total": 4,
+    "byLevel": {
+      "info": 0,
+      "attention": 3,
+      "high": 1
+    },
+    "byKind": {
+      "permission": 1,
+      "mcp": 3
+    }
+  }
+}

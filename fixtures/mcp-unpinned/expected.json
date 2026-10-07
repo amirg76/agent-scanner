@@ -1,0 +1,7 @@
+{
+  "description": "An MCP server fetched by npx with no version: every future release runs without review.",
+  "exact": true,
+  "findings": [
+    { "kind": "mcp", "server": "demo", "pinned": false, "level": "attention", "file": ".mcp.json" }
+  ]
+}

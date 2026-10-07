@@ -1,0 +1,67 @@
+{
+  "dir": "targets/JuliusBrussee_caveman",
+  "filesSeen": 1594,
+  "plugins": [
+    "caveman"
+  ],
+  "findings": [
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": ".claude-plugin/plugin.json",
+      "command": "HOOK_ROOT=$(printf %s \"${CLAUDE_PLUGIN_ROOT}\" | sed 's|^/\\([a-zA-Z]\\)/|\\1:/|'); node \"$HOOK_ROOT/src/hooks/caveman-activate.js\"",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything.",
+      "plugin": "caveman"
+    },
+    {
+      "kind": "hook",
+      "event": "UserPromptSubmit",
+      "level": "attention",
+      "file": ".claude-plugin/plugin.json",
+      "command": "HOOK_ROOT=$(printf %s \"${CLAUDE_PLUGIN_ROOT}\" | sed 's|^/\\([a-zA-Z]\\)/|\\1:/|'); node \"$HOOK_ROOT/src/hooks/caveman-mode-tracker.js\"",
+      "hookType": "command",
+      "why": "Runs on every prompt the user sends and can add text to it.",
+      "plugin": "caveman"
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude",
+      "backup": true,
+      "traced": true,
+      "level": "info",
+      "file": "bin/install.js",
+      "why": "Writes into the agent config folder; backup-related code is present (heuristic: confirm by reading the script)."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude",
+      "backup": true,
+      "traced": true,
+      "level": "info",
+      "file": "src/hooks/install.ps1",
+      "why": "Writes into the agent config folder; backup-related code is present (heuristic: confirm by reading the script)."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude",
+      "backup": true,
+      "traced": true,
+      "level": "info",
+      "file": "src/hooks/install.sh",
+      "why": "Writes into the agent config folder; backup-related code is present (heuristic: confirm by reading the script)."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude/settings.json",
+      "backup": true,
+      "traced": true,
+      "level": "info",
+      "file": "src/hooks/install.sh",
+      "why": "Writes into the agent config folder; backup-related code is present (heuristic: confirm by reading the script)."
+    }
+  ],
+  "errors": [],
+  "skipped": []
+}

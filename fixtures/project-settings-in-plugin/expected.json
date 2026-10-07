@@ -1,0 +1,9 @@
+{
+  "description": "Only files at the plugin root are the plugin's components. A template project inside the repo has its own settings and .mcp.json: reported, but not attributed to the plugin.",
+  "exact": true,
+  "findings": [
+    { "kind": "mcp", "server": "plugin-demo", "plugin": "plugin-with-template", "file": ".mcp.json" },
+    { "kind": "mcp", "server": "template-demo", "pinned": false, "file": "template/.mcp.json" },
+    { "kind": "permission", "rule": "enableAllProjectMcpServers:true", "projectSettings": true, "file": "template/.claude/settings.json" }
+  ]
+}

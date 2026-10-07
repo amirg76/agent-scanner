@@ -1,0 +1,5 @@
+{
+  "description": "False-positive check: narrow allow rules and ordinary npm scripts are not reported.",
+  "exact": true,
+  "findings": []
+}

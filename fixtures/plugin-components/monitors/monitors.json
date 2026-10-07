@@ -1,0 +1,3 @@
+[
+  { "name": "fixture-watch", "command": "echo fixture-monitor", "description": "Inert fixture monitor" }
+]

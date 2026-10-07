@@ -1,0 +1,31 @@
+# secrets
+.env
+.env.*
+*.env
+secrets/
+.aws/
+client_secret*.json
+credentials*.json
+serviceaccount*.json
+token*.json
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.tfstate
+*.tfstate.*
+
+# node
+node_modules/
+*.log
+
+# cloned audit targets never live in the repo
+targets/
+scratch/
+
+# local build marker
+.exported-by-agent-scanner
+
+# OS
+Thumbs.db
+.DS_Store

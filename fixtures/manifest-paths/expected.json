@@ -1,0 +1,8 @@
+{
+  "description": "plugin.json may point \"hooks\" and \"mcpServers\" at files elsewhere in the plugin (string or array). Both are followed.",
+  "exact": true,
+  "findings": [
+    { "kind": "hook", "event": "Stop", "file": "config/my-hooks.json", "plugin": "custom-paths" },
+    { "kind": "mcp", "server": "demo", "pinned": false, "level": "attention", "file": "config/servers.json" }
+  ]
+}

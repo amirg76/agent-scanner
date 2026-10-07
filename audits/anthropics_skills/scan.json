@@ -1,0 +1,14 @@
+{
+  "dir": "targets/anthropics_skills",
+  "filesSeen": 419,
+  "plugins": [
+    "document-skills",
+    "example-skills",
+    "claude-api",
+    "academy-guide",
+    "discernment-nudge"
+  ],
+  "findings": [],
+  "errors": [],
+  "skipped": []
+}

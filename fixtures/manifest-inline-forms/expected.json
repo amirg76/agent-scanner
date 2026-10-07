@@ -1,0 +1,11 @@
+{
+  "description": "plugin.json declares components inline and in arrays that mix a path and an object (plugin manifest reference, Component path forms). Every inline object is read; an MCP bundle is listed as not read.",
+  "exact": true,
+  "findings": [
+    { "kind": "hook", "event": "Stop", "file": "config/extra-hooks.json", "plugin": "inline-forms" },
+    { "kind": "hook", "event": "PostToolUse", "matcher": "Write|Edit", "file": ".claude-plugin/plugin.json", "plugin": "inline-forms" },
+    { "kind": "mcp", "server": "inline-server", "file": ".claude-plugin/plugin.json", "plugin": "inline-forms" },
+    { "kind": "lsp", "name": "fixture-lsp", "command": "echo fixture-inline-lsp", "file": ".claude-plugin/plugin.json", "plugin": "inline-forms" },
+    { "kind": "monitor", "name": "fixture-inline-watch", "command": "echo fixture-inline-monitor", "file": ".claude-plugin/plugin.json", "plugin": "inline-forms" }
+  ]
+}

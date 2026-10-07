@@ -1,0 +1,10 @@
+{
+  "description": "A marketplace entry declares components inline (marketplace reference: an entry accepts every plugin.json field) and two entry fields run commands. All four are reported; the github and archive entries, the command-produced entry and the missing folder are listed as not checked. Entries with a folder here are plugins, so their findings belong to them.",
+  "exact": true,
+  "findings": [
+    { "kind": "hook", "event": "SessionStart", "file": ".claude-plugin/marketplace.json", "marketplaceEntry": "inline-hooks", "plugin": "inline-hooks", "command": "echo fixture-entry-hook" },
+    { "kind": "lsp", "name": "fixture-ls", "file": ".claude-plugin/marketplace.json", "marketplaceEntry": "inline-lsp", "plugin": "inline-lsp", "command": "echo fixture-entry-lsp" },
+    { "kind": "settings-command", "name": "plugin source command (from-command)", "command": "echo fixture-source-command", "level": "attention" },
+    { "kind": "settings-command", "name": "headersHelper (archive-with-helper)", "command": "echo fixture-headers-helper", "level": "attention" }
+  ]
+}

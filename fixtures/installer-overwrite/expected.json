@@ -1,0 +1,7 @@
+{
+  "description": "An installer that writes into ~/.claude with no backup step (the ECC pattern from audit 0).",
+  "exact": true,
+  "findings": [
+    { "kind": "installer", "target": "~/.claude/skills", "backup": false, "level": "attention", "file": "install.sh" }
+  ]
+}

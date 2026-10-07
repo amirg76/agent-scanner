@@ -1,0 +1,5 @@
+{
+  "name": "hook-session-start",
+  "version": "1.0.0",
+  "description": "Fixture: a hook that runs when every session starts."
+}

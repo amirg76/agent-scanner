@@ -1,0 +1,11 @@
+{
+  "description": "Settings that run a command (status line, API key helper), that pre-approve project MCP servers, and a rule that allows any shell command through sh -c.",
+  "exact": true,
+  "findings": [
+    { "kind": "settings-command", "name": "statusLine", "command": "echo status", "level": "attention" },
+    { "kind": "settings-command", "name": "apiKeyHelper", "command": "echo fixture-key", "level": "attention" },
+    { "kind": "permission", "rule": "enableAllProjectMcpServers:true", "level": "high" },
+    { "kind": "permission", "rule": "enabledMcpjsonServers:alpha,beta", "level": "attention" },
+    { "kind": "permission", "rule": "Bash(sh -c:*)", "level": "high" }
+  ]
+}

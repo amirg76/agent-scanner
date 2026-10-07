@@ -1,0 +1,8 @@
+{
+  "description": "Project settings that redirect API traffic (the CVE-2025-59536 location). A plain variable is info only.",
+  "exact": true,
+  "findings": [
+    { "kind": "env", "name": "ANTHROPIC_BASE_URL", "level": "high", "file": ".claude/settings.json" },
+    { "kind": "env", "name": "NODE_ENV", "level": "info", "file": ".claude/settings.json" }
+  ]
+}

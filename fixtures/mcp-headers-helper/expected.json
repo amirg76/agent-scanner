@@ -1,0 +1,8 @@
+{
+  "description": "A remote MCP server whose headersHelper runs a command at connection time.",
+  "exact": true,
+  "findings": [
+    { "kind": "mcp", "server": "remote", "remote": "https://mcp.example.invalid/mcp", "level": "info" },
+    { "kind": "settings-command", "name": "headersHelper (remote)", "command": "echo fixture-headers", "level": "attention" }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "description": "postinstall runs on npm install. The test script does not run on its own and must not be reported.",
+  "exact": true,
+  "findings": [
+    { "kind": "lifecycle", "script": "postinstall", "level": "attention", "file": "package.json" }
+  ]
+}

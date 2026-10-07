@@ -1,0 +1,20 @@
+{
+  "repo": "gsd-build/get-shit-done",
+  "commit": "bdcaab2c752d9a33a1a1ca9acf3a3c81fb991815",
+  "commitDate": "2026-05-31",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 1854,
+  "plugins": 0,
+  "summary": {
+    "total": 3,
+    "byLevel": {
+      "info": 1,
+      "attention": 2,
+      "high": 0
+    },
+    "byKind": {
+      "installer": 3
+    }
+  }
+}

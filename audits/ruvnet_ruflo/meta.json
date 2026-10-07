@@ -1,0 +1,26 @@
+{
+  "repo": "ruvnet/ruflo",
+  "commit": "0a96fb8857dabd343d71d76c3ca703100a2923bc",
+  "commitDate": "2026-09-23",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 5775,
+  "plugins": 44,
+  "summary": {
+    "total": 72,
+    "byLevel": {
+      "info": 4,
+      "attention": 68,
+      "high": 0
+    },
+    "byKind": {
+      "hook": 54,
+      "mcp": 4,
+      "installer": 4,
+      "permission": 1,
+      "settings-command": 2,
+      "env": 3,
+      "lifecycle": 4
+    }
+  }
+}

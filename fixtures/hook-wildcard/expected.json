@@ -1,0 +1,7 @@
+{
+  "description": "One hook on every tool call.",
+  "exact": true,
+  "findings": [
+    { "kind": "hook", "event": "PreToolUse", "matcher": "*", "level": "attention", "file": "hooks/hooks.json" }
+  ]
+}

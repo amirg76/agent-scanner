@@ -1,0 +1,23 @@
+{
+  "repo": "SuperClaude-Org/SuperClaude_Framework",
+  "commit": "2d0fda08f2eed9951794dc9c54a6289454961075",
+  "commitDate": "2026-09-15",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 409,
+  "plugins": 1,
+  "summary": {
+    "total": 10,
+    "byLevel": {
+      "info": 0,
+      "attention": 10,
+      "high": 0
+    },
+    "byKind": {
+      "installer": 3,
+      "lifecycle": 1,
+      "mcp": 2,
+      "hook": 4
+    }
+  }
+}

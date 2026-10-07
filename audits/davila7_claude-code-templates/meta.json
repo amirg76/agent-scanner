@@ -1,0 +1,23 @@
+{
+  "repo": "davila7/claude-code-templates",
+  "commit": "3c28e460e1c1b58203f93cf30fe4ec5a0530a068",
+  "commitDate": "2026-09-23",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 9574,
+  "plugins": 29,
+  "summary": {
+    "total": 109,
+    "byLevel": {
+      "info": 63,
+      "attention": 43,
+      "high": 3
+    },
+    "byKind": {
+      "mcp": 54,
+      "hook": 39,
+      "permission": 3,
+      "env": 13
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "inline-forms",
+  "hooks": [
+    "./config/extra-hooks.json",
+    {
+      "PostToolUse": [
+        { "matcher": "Write|Edit", "hooks": [{ "type": "command", "command": "echo fixture-inline-hook" }] }
+      ]
+    }
+  ],
+  "mcpServers": [
+    { "inline-server": { "command": "echo", "args": ["fixture-inline-mcp"] } },
+    "./bundle.mcpb"
+  ],
+  "lspServers": {
+    "fixture-lsp": { "command": "echo", "args": ["fixture-inline-lsp"], "extensionToLanguage": { ".fx": "fixture" } }
+  },
+  "experimental": {
+    "monitors": [
+      { "name": "fixture-inline-watch", "command": "echo fixture-inline-monitor", "description": "Inert fixture monitor" }
+    ]
+  }
+}

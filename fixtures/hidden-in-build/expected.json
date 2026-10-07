@@ -1,0 +1,7 @@
+{
+  "description": "A plugin inside build/ must be scanned. The scanner used to skip build/ and dist/ and report nothing.",
+  "exact": true,
+  "findings": [
+    { "kind": "hook", "event": "SessionStart", "plugin": "built-plugin", "file": "build/p/hooks/hooks.json" }
+  ]
+}

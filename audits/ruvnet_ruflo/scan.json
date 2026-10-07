@@ -1,0 +1,1337 @@
+{
+  "dir": "targets/ruvnet_ruflo",
+  "filesSeen": 5775,
+  "plugins": [
+    "ruflo-chatgpt-federation",
+    "ruflo-graph-intelligence",
+    "ruflo-deepseek-harness",
+    "ruflo-knowledge-graph",
+    "ruflo-bbs-federation",
+    "ruflo-plugin-creator",
+    "ruflo-security-audit",
+    "ruflo-business-pods",
+    "ruflo-neural-trader",
+    "ruflo-observability",
+    "ruflo-cost-tracker",
+    "ruflo-intelligence",
+    "ruflo-iot-cognitum",
+    "ruflo-loop-workers",
+    "ruflo-market-data",
+    "ruflo-metaharness",
+    "ruflo-federation",
+    "ruflo-migrations",
+    "ruflo-rag-memory",
+    "ruflo-aidefence",
+    "ruflo-autopilot",
+    "ruflo-workflows",
+    "ruflo-x-gateway",
+    "ruflo-ruvector",
+    "ruflo-agentdb",
+    "ruflo-browser",
+    "ruflo-jujutsu",
+    "ruflo-testgen",
+    "ruflo-agntcy",
+    "ruflo-ruvllm",
+    "ruflo-agent",
+    "ruflo-arena",
+    "ruflo-goals",
+    "ruflo-music",
+    "ruflo-sparc",
+    "ruflo-swarm",
+    "ruflo-core",
+    "ruflo-docs",
+    "ruflo-adr",
+    "ruflo-daa",
+    "ruflo-ddd",
+    "ruflo-rvf",
+    "claude-flow (plugin/)",
+    "claude-flow (repo root)"
+  ],
+  "findings": [
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": ".claude-plugin/hooks/hooks.json",
+      "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" modify-bash || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"Bash\".",
+      "matcher": "Bash"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": ".claude-plugin/hooks/hooks.json",
+      "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" modify-file || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"Write|Edit|MultiEdit\".",
+      "matcher": "Write|Edit|MultiEdit"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": ".claude-plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_input.command // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" post-command --command '{}' --track-metrics true --store-results true || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"Bash\".",
+      "matcher": "Bash"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": ".claude-plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" post-edit --file '{}' --format true --update-memory true || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"Write|Edit|MultiEdit\".",
+      "matcher": "Write|Edit|MultiEdit"
+    },
+    {
+      "kind": "hook",
+      "event": "PreCompact",
+      "level": "attention",
+      "file": ".claude-plugin/hooks/hooks.json",
+      "command": "/bin/bash -c 'INPUT=$(cat); CUSTOM=$(echo \"$INPUT\" | jq -r \".custom_instructions // \\\"\\\"\"); echo \"🔄 PreCompact Guidance:\"; echo \"📋 IMPORTANT: Review CLAUDE.md in project root for:\"; echo \"   • 54 available agents and concurrent usage patterns\"; echo \"   • Swarm coordination strategies (hierarchical, mesh, adaptive)\"; echo \"   • SPARC methodology workflows with batchtools optimization\"; echo \"   • Critical concurrent execution rules (GOLDEN RULE: 1 MESSAGE = ALL OPERATIONS)\"; if [ -n \"$CUSTOM\" ]; then echo \"🎯 Custom compact instructions: $CUSTOM\"; fi; echo \"✅ Ready for compact operation\"'",
+      "hookType": "command",
+      "why": "Runs on PreCompact events matching \"manual\". The code is inline in the command (597 characters), not in a separate file.",
+      "matcher": "manual",
+      "inlineCode": true
+    },
+    {
+      "kind": "hook",
+      "event": "PreCompact",
+      "level": "attention",
+      "file": ".claude-plugin/hooks/hooks.json",
+      "command": "/bin/bash -c 'echo \"🔄 Auto-Compact Guidance (Context Window Full):\"; echo \"📋 CRITICAL: Before compacting, ensure you understand:\"; echo \"   • All 54 agents available in .claude/agents/ directory\"; echo \"   • Concurrent execution patterns from CLAUDE.md\"; echo \"   • Batchtools optimization for 300% performance gains\"; echo \"   • Swarm coordination strategies for complex tasks\"; echo \"⚡ Apply GOLDEN RULE: Always batch operations in single messages\"; echo \"✅ Auto-compact proceeding with full agent context\"'",
+      "hookType": "command",
+      "why": "Runs on PreCompact events matching \"auto\". The code is inline in the command (511 characters), not in a separate file.",
+      "matcher": "auto",
+      "inlineCode": true
+    },
+    {
+      "kind": "hook",
+      "event": "Stop",
+      "level": "attention",
+      "file": ".claude-plugin/hooks/hooks.json",
+      "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" session-end --generate-summary true --persist-state true --export-metrics true || true",
+      "hookType": "command",
+      "why": "Runs on every Stop event."
+    },
+    {
+      "kind": "mcp",
+      "server": "claude-flow",
+      "command": "npx claude-flow@alpha mcp start",
+      "package": "claude-flow@alpha",
+      "pinned": false,
+      "level": "attention",
+      "file": ".claude-plugin/plugin.json",
+      "why": "Fetched from a registry with no version: every future release runs without review. Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions.",
+      "plugin": "claude-flow (repo root)"
+    },
+    {
+      "kind": "mcp",
+      "server": "ruv-swarm",
+      "command": "npx ruv-swarm mcp start",
+      "package": "ruv-swarm",
+      "pinned": false,
+      "level": "attention",
+      "file": ".claude-plugin/plugin.json",
+      "why": "Fetched from a registry with no version: every future release runs without review. Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions.",
+      "plugin": "claude-flow (repo root)"
+    },
+    {
+      "kind": "mcp",
+      "server": "flow-nexus",
+      "command": "npx flow-nexus@latest mcp start",
+      "package": "flow-nexus@latest",
+      "pinned": false,
+      "level": "attention",
+      "file": ".claude-plugin/plugin.json",
+      "why": "Fetched from a registry with no version: every future release runs without review. Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions.",
+      "plugin": "claude-flow (repo root)"
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude",
+      "backup": false,
+      "traced": true,
+      "level": "attention",
+      "file": ".claude-plugin/scripts/install.sh",
+      "why": "Writes into the agent config folder and no backup code was found (heuristic): existing files of the same name are likely replaced."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude/agents",
+      "backup": false,
+      "traced": true,
+      "level": "attention",
+      "file": ".claude-plugin/scripts/install.sh",
+      "why": "Writes into the agent config folder and no backup code was found (heuristic): existing files of the same name are likely replaced."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude/commands",
+      "backup": false,
+      "traced": true,
+      "level": "attention",
+      "file": ".claude-plugin/scripts/install.sh",
+      "why": "Writes into the agent config folder and no backup code was found (heuristic): existing files of the same name are likely replaced."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude/settings.json",
+      "backup": false,
+      "traced": true,
+      "level": "attention",
+      "file": ".claude-plugin/scripts/install.sh",
+      "why": "Writes into the agent config folder and no backup code was found (heuristic): existing files of the same name are likely replaced."
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" pre-bash",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"Bash\".",
+      "matcher": "Bash",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" post-edit",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"Write|Edit|MultiEdit\".",
+      "matcher": "Write|Edit|MultiEdit",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "UserPromptSubmit",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" route",
+      "hookType": "command",
+      "why": "Runs on every prompt the user sends and can add text to it.",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" session-restore",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything.",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/auto-memory-hook.mjs\" import",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything.",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "SessionEnd",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" session-end",
+      "hookType": "command",
+      "why": "Runs on every SessionEnd event.",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "Stop",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/auto-memory-hook.mjs\" sync",
+      "hookType": "command",
+      "why": "Runs on every Stop event.",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PreCompact",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" compact-manual",
+      "hookType": "command",
+      "why": "Runs on PreCompact events matching \"manual\".",
+      "matcher": "manual",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PreCompact",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" session-end",
+      "hookType": "command",
+      "why": "Runs on PreCompact events matching \"manual\".",
+      "matcher": "manual",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PreCompact",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" compact-auto",
+      "hookType": "command",
+      "why": "Runs on PreCompact events matching \"auto\".",
+      "matcher": "auto",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PreCompact",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" session-end",
+      "hookType": "command",
+      "why": "Runs on PreCompact events matching \"auto\".",
+      "matcher": "auto",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "SubagentStop",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/hook-handler.cjs\" post-task",
+      "hookType": "command",
+      "why": "Runs on every SubagentStop event.",
+      "projectSettings": true
+    },
+    {
+      "kind": "permission",
+      "rule": "enabledMcpjsonServers:claude-flow",
+      "setting": true,
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "why": "Approves 1 project MCP server(s) without a prompt.",
+      "projectSettings": true
+    },
+    {
+      "kind": "settings-command",
+      "name": "statusLine",
+      "command": "sh -c 'exec node \"${CLAUDE_PROJECT_DIR:-.}/.claude/helpers/statusline.cjs\"'",
+      "level": "attention",
+      "file": ".claude/settings.json",
+      "why": "Runs a command to render the status line.",
+      "projectSettings": true
+    },
+    {
+      "kind": "env",
+      "name": "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS",
+      "level": "info",
+      "file": ".claude/settings.json",
+      "why": "Sets an environment variable for every session in this project.",
+      "projectSettings": true
+    },
+    {
+      "kind": "env",
+      "name": "CLAUDE_FLOW_V3_ENABLED",
+      "level": "info",
+      "file": ".claude/settings.json",
+      "why": "Sets an environment variable for every session in this project.",
+      "projectSettings": true
+    },
+    {
+      "kind": "env",
+      "name": "CLAUDE_FLOW_HOOKS_ENABLED",
+      "level": "info",
+      "file": ".claude/settings.json",
+      "why": "Sets an environment variable for every session in this project.",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" pre-edit --file '{}' || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"^(Write|Edit|MultiEdit)$\".",
+      "matcher": "^(Write|Edit|MultiEdit)$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_input.command // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" pre-command --command '{}' || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"^Bash$\".",
+      "matcher": "^Bash$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_input.description // empty | .[:200]' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" pre-task --description '{}' || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"^Task$\".",
+      "matcher": "^Task$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_input.pattern // .tool_input.query // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" pre-search --query '{}' || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"^(Grep|Glob|Read)$\".",
+      "matcher": "^(Grep|Glob|Read)$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_name // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" mcp-pre --tool '{}' || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"^mcp__claude-flow__.*$\".",
+      "matcher": "^mcp__claude-flow__.*$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" post-edit --file '{}' --train-patterns || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"^(Write|Edit|MultiEdit)$\".",
+      "matcher": "^(Write|Edit|MultiEdit)$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_input.command // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" post-command --command '{}' --track-metrics true --store-results true || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"^Bash$\".",
+      "matcher": "^Bash$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_response.agent_id // .tool_response.task_id // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" post-task --task-id '{}' --analyze-performance || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"^Task$\".",
+      "matcher": "^Task$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_input.pattern // .tool_input.query // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" post-search --query '{}' --cache-results || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"^(Grep|Glob|Read)$\".",
+      "matcher": "^(Grep|Glob|Read)$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.tool_name // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" mcp-post --tool '{}' || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"^mcp__claude-flow__.*$\".",
+      "matcher": "^mcp__claude-flow__.*$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "UserPromptSubmit",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.prompt // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" route --task '{}' --include-explanation || true",
+      "hookType": "command",
+      "why": "Runs on every prompt the user sends and can add text to it.",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.session_id // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" session-start --session-id '{}' --load-context || true",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything.",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "Stop",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "hookType": "prompt",
+      "why": "Runs on every Stop event.",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "SubagentStop",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "hookType": "prompt",
+      "why": "Runs on every SubagentStop event.",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "Notification",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "cat | jq -r '.message // empty' | tr '\\n' '\\0' | xargs -0 -I {} \"${CLAUDE_PLUGIN_ROOT}/scripts/ruflo-hook.sh\" notify --message '{}' --swarm-status || true",
+      "hookType": "command",
+      "why": "Runs on every Notification event.",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "hook",
+      "event": "PermissionRequest",
+      "level": "attention",
+      "file": "plugin/hooks/hooks.json",
+      "command": "echo '{\"decision\": \"allow\", \"reason\": \"claude-flow MCP tool auto-approved\"}'",
+      "hookType": "command",
+      "why": "Runs on PermissionRequest for tools matching \"^mcp__claude-flow__.*$\".",
+      "matcher": "^mcp__claude-flow__.*$",
+      "plugin": "claude-flow (plugin/)"
+    },
+    {
+      "kind": "mcp",
+      "server": "ruflo",
+      "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/mcp-launch.cjs",
+      "pinned": null,
+      "level": "info",
+      "file": "plugins/ruflo-core/.mcp.json",
+      "why": "Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions.",
+      "plugin": "ruflo-core"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "plugins/ruflo-core/hooks/hooks.json",
+      "command": "node -e \"process.argv=[process.argv[0],'x','modify-bash'];require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT,'scripts','ruflo-hook.cjs'))\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"Bash\". The code is inline in the command (147 characters), not in a separate file.",
+      "matcher": "Bash",
+      "inlineCode": true,
+      "plugin": "ruflo-core"
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "plugins/ruflo-core/hooks/hooks.json",
+      "command": "node -e \"process.argv=[process.argv[0],'x','modify-file'];require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT,'scripts','ruflo-hook.cjs'))\"",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"Write|Edit|MultiEdit\". The code is inline in the command (147 characters), not in a separate file.",
+      "matcher": "Write|Edit|MultiEdit",
+      "inlineCode": true,
+      "plugin": "ruflo-core"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "plugins/ruflo-core/hooks/hooks.json",
+      "command": "node -e \"process.argv=[process.argv[0],'x','post-command'];require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT,'scripts','ruflo-hook.cjs'))\"",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"Bash\". The code is inline in the command (148 characters), not in a separate file.",
+      "matcher": "Bash",
+      "inlineCode": true,
+      "plugin": "ruflo-core"
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "plugins/ruflo-core/hooks/hooks.json",
+      "command": "node -e \"process.argv=[process.argv[0],'x','post-edit'];require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT,'scripts','ruflo-hook.cjs'))\"",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"Write|Edit|MultiEdit\". The code is inline in the command (145 characters), not in a separate file.",
+      "matcher": "Write|Edit|MultiEdit",
+      "inlineCode": true,
+      "plugin": "ruflo-core"
+    },
+    {
+      "kind": "hook",
+      "event": "PreCompact",
+      "level": "attention",
+      "file": "plugins/ruflo-core/hooks/hooks.json",
+      "command": "node -e \"process.argv=[process.argv[0],'x','precompact-manual'];require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT,'scripts','ruflo-hook.cjs'))\"",
+      "hookType": "command",
+      "why": "Runs on PreCompact events matching \"manual\". The code is inline in the command (153 characters), not in a separate file.",
+      "matcher": "manual",
+      "inlineCode": true,
+      "plugin": "ruflo-core"
+    },
+    {
+      "kind": "hook",
+      "event": "PreCompact",
+      "level": "attention",
+      "file": "plugins/ruflo-core/hooks/hooks.json",
+      "command": "node -e \"process.argv=[process.argv[0],'x','precompact-auto'];require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT,'scripts','ruflo-hook.cjs'))\"",
+      "hookType": "command",
+      "why": "Runs on PreCompact events matching \"auto\". The code is inline in the command (151 characters), not in a separate file.",
+      "matcher": "auto",
+      "inlineCode": true,
+      "plugin": "ruflo-core"
+    },
+    {
+      "kind": "hook",
+      "event": "Stop",
+      "level": "attention",
+      "file": "plugins/ruflo-core/hooks/hooks.json",
+      "command": "node -e \"process.argv=[process.argv[0],'x','session-end','--generate-summary','true','--persist-state','true','--export-metrics','true'];require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT,'scripts','ruflo-hook.cjs'))\"",
+      "hookType": "command",
+      "why": "Runs on every Stop event. The code is inline in the command (226 characters), not in a separate file.",
+      "inlineCode": true,
+      "plugin": "ruflo-core"
+    },
+    {
+      "kind": "hook",
+      "event": "Stop",
+      "level": "attention",
+      "file": "plugins/ruflo-cost-tracker/hooks/hooks.json",
+      "command": "node -e \"require(require('path').join(process.env.CLAUDE_PLUGIN_ROOT,'scripts','ruflo-hook.cjs'))\"",
+      "hookType": "command",
+      "why": "Runs on every Stop event. The code is inline in the command (98 characters), not in a separate file.",
+      "inlineCode": true,
+      "plugin": "ruflo-cost-tracker"
+    },
+    {
+      "kind": "lifecycle",
+      "script": "prepare",
+      "command": "husky",
+      "level": "attention",
+      "file": "ruflo/src/ruvocal/package.json",
+      "why": "Runs on install from git and before publish."
+    },
+    {
+      "kind": "lifecycle",
+      "script": "postinstall",
+      "command": "node -e \"const{execSync}=require('child_process');try{execSync('agent-browser --version',{stdio:'ignore'});}catch{console.log('\\n📦 Installing agent-browser globally...');try{execSync('npm install -g agent-browser@latest',{stdio:'inherit'});console.log('✅ agent-browser installed successfully!');}catch(e){console.log('⚠️  Could not install agent-browser globally. Run manually:\\n   npm install -g agent-browser@latest');}}\"",
+      "level": "attention",
+      "file": "v3/@claude-flow/browser/package.json",
+      "why": "Runs automatically on npm install (postinstall)."
+    },
+    {
+      "kind": "lifecycle",
+      "script": "postinstall",
+      "command": "node ./scripts/postinstall.cjs",
+      "level": "attention",
+      "file": "v3/@claude-flow/cli/package.json",
+      "why": "Runs automatically on npm install (postinstall)."
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "[ -n \"$TOOL_INPUT_file_path\" ] && npx @claude-flow/cli@latest hooks pre-edit --file \"$TOOL_INPUT_file_path\" 2>/dev/null || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"^(Write|Edit|MultiEdit)$\". Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "matcher": "^(Write|Edit|MultiEdit)$",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "[ -n \"$TOOL_INPUT_command\" ] && npx @claude-flow/cli@latest hooks pre-command --command \"$TOOL_INPUT_command\" 2>/dev/null || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"^Bash$\". Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "matcher": "^Bash$",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PreToolUse",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "[ -n \"$TOOL_INPUT_description\" ] && npx @claude-flow/cli@latest hooks pre-task --task-id \"task-$(date +%s)\" --description \"$(echo \"$TOOL_INPUT_description\" | head -c 200)\" 2>/dev/null || true",
+      "hookType": "command",
+      "why": "Runs on PreToolUse for tools matching \"^Task$\". Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "matcher": "^Task$",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "[ -n \"$TOOL_INPUT_file_path\" ] && npx @claude-flow/cli@latest hooks post-edit --file \"$TOOL_INPUT_file_path\" --success \"${TOOL_SUCCESS:-true}\" 2>/dev/null || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"^(Write|Edit|MultiEdit)$\". Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "matcher": "^(Write|Edit|MultiEdit)$",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "[ -n \"$TOOL_INPUT_command\" ] && npx @claude-flow/cli@latest hooks post-command --command \"$TOOL_INPUT_command\" --success \"${TOOL_SUCCESS:-true}\" 2>/dev/null || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"^Bash$\". Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "matcher": "^Bash$",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "PostToolUse",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "[ -n \"$TOOL_RESULT_agent_id\" ] && npx @claude-flow/cli@latest hooks post-task --task-id \"$TOOL_RESULT_agent_id\" --success \"${TOOL_SUCCESS:-true}\" 2>/dev/null || true",
+      "hookType": "command",
+      "why": "Runs on PostToolUse for tools matching \"^Task$\". Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "matcher": "^Task$",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "UserPromptSubmit",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "[ -n \"$PROMPT\" ] && npx @claude-flow/cli@latest hooks route --task \"$PROMPT\" || true",
+      "hookType": "command",
+      "why": "Runs on every prompt the user sends and can add text to it. Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "npx @claude-flow/cli@latest daemon start --quiet 2>/dev/null || true",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything. Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "SessionStart",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "[ -n \"$SESSION_ID\" ] && npx @claude-flow/cli@latest hooks session-restore --session-id \"$SESSION_ID\" 2>/dev/null || true",
+      "hookType": "command",
+      "why": "Runs at session start (startup, resume, clear or compact), before the user types anything. Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "Stop",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "echo '{\"ok\": true}'",
+      "hookType": "command",
+      "why": "Runs on every Stop event.",
+      "projectSettings": true
+    },
+    {
+      "kind": "hook",
+      "event": "Notification",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "command": "[ -n \"$NOTIFICATION_MESSAGE\" ] && npx @claude-flow/cli@latest memory store --namespace notifications --key \"notify-$(date +%s)\" --value \"$NOTIFICATION_MESSAGE\" 2>/dev/null || true",
+      "hookType": "command",
+      "why": "Runs on every Notification event. Runs @claude-flow/cli@latest: the \"latest\" tag is resolved from the registry on each run.",
+      "package": "@claude-flow/cli@latest",
+      "pinned": false,
+      "projectSettings": true
+    },
+    {
+      "kind": "settings-command",
+      "name": "statusLine",
+      "command": "npx @claude-flow/cli@latest hooks statusline 2>/dev/null || node .claude/helpers/statusline.cjs 2>/dev/null || echo \"▊ Claude Flow V3\"",
+      "level": "attention",
+      "file": "v3/@claude-flow/mcp/.claude/settings.json",
+      "why": "Runs a command to render the status line.",
+      "projectSettings": true
+    },
+    {
+      "kind": "lifecycle",
+      "script": "prepare",
+      "command": "npm run build",
+      "level": "attention",
+      "file": "v3/@claude-flow/security/package.json",
+      "why": "Runs on install from git and before publish."
+    }
+  ],
+  "errors": [
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/analysis/analyze-code-quality.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/analysis/code-analyzer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/analysis/code-review/analyze-code-quality.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/architecture/arch-system-design.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/architecture/system-design/arch-system-design.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/consensus/byzantine-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/consensus/crdt-synchronizer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/consensus/gossip-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/consensus/performance-benchmarker.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/consensus/quorum-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/consensus/raft-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/consensus/security-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/core/planner.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/data/data-ml-model.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/data/ml/data-ml-model.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/development/backend/dev-backend-api.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/development/dev-backend-api.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/devops/ci-cd/ops-cicd-github.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/devops/ops-cicd-github.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/documentation/api-docs/docs-api-openapi.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/documentation/docs-api-openapi.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/github/code-review-swarm.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/github/github-modes.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/github/issue-tracker.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/github/pr-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/github/release-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/github/release-swarm.md",
+      "error": "hooks entries not in the documented shape (keys: pre_task, post_edit, post_task, notification); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/github/repo-architect.md",
+      "error": "hooks entries not in the documented shape (keys: pre_task, post_edit, post_task, notification); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/github/workflow-automation.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/sparc/architecture.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/sparc/pseudocode.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/sparc/refinement.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/sparc/specification.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/specialized/mobile/spec-mobile-react-native.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/specialized/spec-mobile-react-native.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/swarm/adaptive-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/swarm/hierarchical-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/swarm/mesh-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/templates/automation-smart-agent.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/templates/base-template-generator.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/templates/coordinator-swarm-init.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/templates/github-pr-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/templates/implementer-sparc-coder.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/templates/memory-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/templates/orchestrator-task.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/templates/performance-analyzer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/templates/sparc-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/testing/production-validator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/testing/tdd-london-swarm.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/aidefence-guardian.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/claims-authorizer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/collective-intelligence-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/ddd-domain-expert.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/injection-analyst.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/performance-engineer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/pii-detector.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/reasoningbank-learner.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/security-architect-aidefence.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/security-architect.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/swarm-memory-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/agents/v3/v3-integration-architect.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/cli/.claude/settings.json",
+      "error": "invalid JSON: Expected ',' or '}' after property value in JSON at position 318 (line 14 column 31)"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/analysis/analyze-code-quality.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/analysis/code-analyzer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/analysis/code-review/analyze-code-quality.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/architecture/arch-system-design.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/architecture/system-design/arch-system-design.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/consensus/byzantine-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/consensus/crdt-synchronizer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/consensus/gossip-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/consensus/performance-benchmarker.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/consensus/quorum-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/consensus/raft-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/consensus/security-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/core/coder.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/core/planner.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/core/researcher.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/core/reviewer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/core/tester.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/data/data-ml-model.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/data/ml/data-ml-model.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/development/backend/dev-backend-api.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/development/dev-backend-api.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/devops/ci-cd/ops-cicd-github.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/devops/ops-cicd-github.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/documentation/api-docs/docs-api-openapi.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/documentation/docs-api-openapi.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/github/code-review-swarm.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/github/github-modes.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/github/issue-tracker.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/github/pr-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/github/release-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/github/release-swarm.md",
+      "error": "hooks entries not in the documented shape (keys: pre_task, post_edit, post_task, notification); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/github/repo-architect.md",
+      "error": "hooks entries not in the documented shape (keys: pre_task, post_edit, post_task, notification); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/github/workflow-automation.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/sparc/architecture.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/sparc/pseudocode.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/sparc/refinement.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/sparc/specification.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/specialized/mobile/spec-mobile-react-native.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/specialized/spec-mobile-react-native.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/swarm/adaptive-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/swarm/hierarchical-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/swarm/mesh-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/templates/automation-smart-agent.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/templates/base-template-generator.md",
+      "error": "hooks entries not in the documented shape (keys: pre_execution, post_execution, on_error); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/templates/coordinator-swarm-init.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/templates/github-pr-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/templates/implementer-sparc-coder.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/templates/memory-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/templates/orchestrator-task.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/templates/performance-analyzer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/templates/sparc-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/testing/production-validator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/testing/tdd-london-swarm.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/adr-architect.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/aidefence-guardian.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/claims-authorizer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/collective-intelligence-coordinator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/ddd-domain-expert.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/injection-analyst.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/memory-specialist.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/performance-engineer.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/pii-detector.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/reasoningbank-learner.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/security-architect-aidefence.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/security-architect.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/security-auditor.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/sparc-orchestrator.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/swarm-memory-manager.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    },
+    {
+      "file": "v3/@claude-flow/mcp/.claude/agents/v3/v3-integration-architect.md",
+      "error": "hooks entries not in the documented shape (keys: pre, post); not interpreted"
+    }
+  ],
+  "skipped": []
+}

@@ -1,0 +1,50 @@
+{
+  "dir": "targets/nextlevelbuilder_ui-ux-pro-max-skill",
+  "filesSeen": 680,
+  "plugins": [
+    "ui-ux-pro-max"
+  ],
+  "findings": [
+    {
+      "kind": "permission",
+      "rule": "enableAllProjectMcpServers:true",
+      "setting": true,
+      "level": "high",
+      "file": "stack/.claude/settings.json",
+      "why": "Approves every server in project .mcp.json files without a prompt.",
+      "projectSettings": true
+    },
+    {
+      "kind": "mcp",
+      "server": "playwright",
+      "command": "npx -y @playwright/mcp@latest",
+      "package": "@playwright/mcp@latest",
+      "pinned": false,
+      "level": "attention",
+      "file": "stack/.mcp.json",
+      "why": "Fetched from a registry with no version: every future release runs without review. Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions."
+    },
+    {
+      "kind": "mcp",
+      "server": "chrome-devtools",
+      "command": "npx -y chrome-devtools-mcp@latest",
+      "package": "chrome-devtools-mcp@latest",
+      "pinned": false,
+      "level": "attention",
+      "file": "stack/.mcp.json",
+      "why": "Fetched from a registry with no version: every future release runs without review. Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions."
+    },
+    {
+      "kind": "mcp",
+      "server": "shadcn",
+      "command": "npx -y shadcn@latest mcp",
+      "package": "shadcn@latest",
+      "pinned": false,
+      "level": "attention",
+      "file": "stack/.mcp.json",
+      "why": "Fetched from a registry with no version: every future release runs without review. Runs as a local process: a plugin starts it when enabled; a project server starts after approval in an interactive session, or without a prompt in claude -p, Agent SDK and cloud sessions."
+    }
+  ],
+  "errors": [],
+  "skipped": []
+}

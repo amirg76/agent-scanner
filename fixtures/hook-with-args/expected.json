@@ -1,0 +1,7 @@
+{
+  "description": "Hook with command and args split: the report must show the script, not just \"sh\".",
+  "exact": true,
+  "findings": [
+    { "kind": "hook", "event": "UserPromptSubmit", "command": "sh ${CLAUDE_PLUGIN_ROOT}/hooks/noop.sh prompt", "file": "hooks/hooks.json" }
+  ]
+}

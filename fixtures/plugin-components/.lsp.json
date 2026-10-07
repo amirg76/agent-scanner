@@ -1,0 +1,3 @@
+{
+  "example-lsp": { "command": "echo", "args": ["fixture-lsp"] }
+}

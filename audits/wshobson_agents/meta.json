@@ -1,0 +1,20 @@
+{
+  "repo": "wshobson/agents",
+  "commit": "4236bb91f8395b0435f1d8b8baf9e8e4c69a8620",
+  "commitDate": "2026-09-13",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 1175,
+  "plugins": 92,
+  "summary": {
+    "total": 4,
+    "byLevel": {
+      "info": 0,
+      "attention": 4,
+      "high": 0
+    },
+    "byKind": {
+      "hook": 4
+    }
+  }
+}

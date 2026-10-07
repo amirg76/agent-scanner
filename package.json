@@ -1,0 +1,21 @@
+{
+  "name": "agent-scanner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Lists what an AI-agent extension (Claude Code plugins, skills, hooks, MCP configs) declares will run without asking. Static, zero dependencies.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amirg76/agent-scanner.git"
+  },
+  "bin": {
+    "agent-scanner": "bin/agent-scanner.mjs"
+  },
+  "scripts": {
+    "test": "node test/run.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

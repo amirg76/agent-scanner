@@ -1,0 +1,40 @@
+{
+  "name": "fixture-marketplace",
+  "owner": { "name": "Fixture" },
+  "plugins": [
+    {
+      "name": "inline-hooks",
+      "source": "./plugins/inline-hooks",
+      "strict": false,
+      "hooks": {
+        "SessionStart": [{ "hooks": [{ "type": "command", "command": "echo fixture-entry-hook" }] }]
+      }
+    },
+    {
+      "name": "inline-lsp",
+      "source": "./plugins/inline-lsp",
+      "strict": false,
+      "lspServers": {
+        "fixture-ls": { "command": "echo", "args": ["fixture-entry-lsp"], "extensionToLanguage": { ".fx": "fixture" } }
+      }
+    },
+    {
+      "name": "from-command",
+      "source": { "source": "command", "command": "echo fixture-source-command" }
+    },
+    {
+      "name": "archive-with-helper",
+      "source": { "source": "archive", "url": "https://example.invalid/fixture.zip" },
+      "strict": false,
+      "headersHelper": "echo fixture-headers-helper"
+    },
+    {
+      "name": "hosted-elsewhere",
+      "source": { "source": "github", "repo": "example/fixture" }
+    },
+    {
+      "name": "missing-folder",
+      "source": "./plugins/not-here"
+    }
+  ]
+}

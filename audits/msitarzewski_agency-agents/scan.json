@@ -1,0 +1,27 @@
+{
+  "dir": "targets/msitarzewski_agency-agents",
+  "filesSeen": 362,
+  "plugins": [],
+  "findings": [
+    {
+      "kind": "installer",
+      "target": "~/.claude",
+      "backup": true,
+      "traced": true,
+      "level": "info",
+      "file": "scripts/install.sh",
+      "why": "Writes into the agent config folder; backup-related code is present (heuristic: confirm by reading the script)."
+    },
+    {
+      "kind": "installer",
+      "target": "~/.claude/agents",
+      "backup": true,
+      "traced": true,
+      "level": "info",
+      "file": "scripts/install.sh",
+      "why": "Writes into the agent config folder; backup-related code is present (heuristic: confirm by reading the script)."
+    }
+  ],
+  "errors": [],
+  "skipped": []
+}

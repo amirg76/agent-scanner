@@ -1,0 +1,7 @@
+{
+  "name": "fixture-market",
+  "plugins": [
+    { "name": "quiet", "source": "./plugins/quiet" },
+    { "name": "busy-plugin", "source": "./plugins/busy" }
+  ]
+}

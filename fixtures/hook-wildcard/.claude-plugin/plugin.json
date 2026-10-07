@@ -1,0 +1,5 @@
+{
+  "name": "hook-wildcard",
+  "version": "1.0.0",
+  "description": "Fixture: a hook that runs before every tool call."
+}

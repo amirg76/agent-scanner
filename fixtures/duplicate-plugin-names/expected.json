@@ -1,0 +1,8 @@
+{
+  "description": "Two plugins with the same manifest name stay separate: each is labelled with its folder.",
+  "exact": true,
+  "findings": [
+    { "kind": "mcp", "server": "root-server", "plugin": "dup (repo root)" },
+    { "kind": "hook", "event": "Stop", "plugin": "dup (sub/)" }
+  ]
+}

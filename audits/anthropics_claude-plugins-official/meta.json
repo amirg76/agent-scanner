@@ -1,0 +1,22 @@
+{
+  "repo": "anthropics/claude-plugins-official",
+  "commit": "6bfd4e0c6d3da6050984fa5ed8281d915fa7ed69",
+  "commitDate": "2026-09-23",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 460,
+  "plugins": 53,
+  "summary": {
+    "total": 48,
+    "byLevel": {
+      "info": 11,
+      "attention": 37,
+      "high": 0
+    },
+    "byKind": {
+      "lsp": 12,
+      "mcp": 14,
+      "hook": 22
+    }
+  }
+}

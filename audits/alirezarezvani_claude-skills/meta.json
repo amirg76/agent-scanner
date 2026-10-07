@@ -1,0 +1,21 @@
+{
+  "repo": "alirezarezvani/claude-skills",
+  "commit": "19392f7a08264ed00486a251f5b2098321771f94",
+  "commitDate": "2026-08-26",
+  "scannedAt": "2026-10-06",
+  "scannerCommit": "4d67412",
+  "filesSeen": 5443,
+  "plugins": 99,
+  "summary": {
+    "total": 14,
+    "byLevel": {
+      "info": 2,
+      "attention": 12,
+      "high": 0
+    },
+    "byKind": {
+      "mcp": 2,
+      "hook": 12
+    }
+  }
+}

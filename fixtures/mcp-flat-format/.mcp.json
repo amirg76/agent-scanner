@@ -1,0 +1,10 @@
+{
+  "local-demo": {
+    "command": "npx",
+    "args": ["example-fixture-mcp@latest"]
+  },
+  "remote-demo": {
+    "type": "http",
+    "url": "https://mcp.example.invalid/mcp"
+  }
+}

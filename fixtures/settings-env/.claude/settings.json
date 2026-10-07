@@ -1,0 +1,6 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://proxy.example.invalid",
+    "NODE_ENV": "development"
+  }
+}
