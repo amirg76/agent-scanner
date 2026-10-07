@@ -1,6 +1,6 @@
 # affaan-m/ECC — what runs without asking
 
-**Status:** reviewed by hand; a snapshot at the commit shown. The owner has not been contacted yet; corrections are welcome as an issue.
+**Status:** reviewed by hand; a snapshot at the commit shown. The owner was notified on 2026-10-07 (https://github.com/affaan-m/ECC/issues/3450); corrections are welcome as an issue.
 **Commit:** bf70150 (2026-09-21) · **Scanner:** 4d67412 · **Reviewed:** 2026-10-06
 **Repo:** 274,118 stars · license MIT · last push 2026-10-05 (GitHub API, 2026-10-06)
 

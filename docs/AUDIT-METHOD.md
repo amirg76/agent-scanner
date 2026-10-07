@@ -71,8 +71,9 @@ When the scanner changes, all audits are regenerated (`tools/audit-scan.mjs`, th
 
 ## 7. Disclosure routing
 
-- **Design choice worth a note** (not a vulnerability): published; a friendly issue to the owner on
-  the day of publication, with a link. Owner corrections are added to the audit.
+- **Design choice worth a note** (not a vulnerability): published; where the point is concrete enough to
+  act on, a friendly issue to the owner with a link. On publication, four owners were notified this way;
+  each of those audits links the issue. Owner corrections are added to the audit.
 - **Exploitable vulnerability**: private report first (GitHub private vulnerability reporting, the
   repo's `SECURITY.md`, or an issue asking for a security contact without details); 90 days or until
   fixed before details are published.

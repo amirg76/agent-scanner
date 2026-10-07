@@ -42,7 +42,14 @@ export function buildIndex(dir) {
   const sum = (k) => rows.reduce((n, r) => n + r[k], 0);
   const L = [];
   L.push('# Audits — what runs without asking', '');
-  L.push('**Status:** snapshot at the commits shown. Owners have not been contacted yet; corrections are welcome as an issue.', '');
+  // How many owners were notified is read from the audits themselves.
+  const notified = rows.filter((r) => /The owner was notified on/.test(readFileSync(join(dir, r.name, 'audit.md'), 'utf8'))).length;
+  L.push(
+    notified
+      ? `**Status:** snapshot at the commits shown. ${notified} of ${rows.length} owners were notified by an issue (linked in each audit); the others have not been contacted. Corrections are welcome as an issue.`
+      : '**Status:** snapshot at the commits shown. Owners have not been contacted yet; corrections are welcome as an issue.',
+    '',
+  );
   L.push(`${rows.length} repos. ${nothing} declare nothing that runs on its own. Across all of them: ${sum('hooks')} hooks (${sum('inline')} with inline code), ${sum('mcp')} MCP servers, ${sum('unpinned')} hooks or servers that run a registry package without a pinned version, ${sum('life')} npm install-time scripts, ${sum('noBackup')} installer targets with no backup code and ${sum('untraced')} installers whose writes were not traced by the scanner (see each audit for the manual check), ${sum('high')} high-level findings.`, '');
   L.push('Counts are what is **declared**, not a judgement. A plugin whose purpose is to hook every tool will have many hooks. Read each audit.', '');
   L.push('| repo | commit | plugins | hooks (inline) | MCP | unpinned | npm install scripts | installer, backup found | installer, no backup | installer, not traced | high |');

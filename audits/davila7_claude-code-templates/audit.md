@@ -1,6 +1,6 @@
 # davila7/claude-code-templates — what runs without asking
 
-**Status:** reviewed by hand; a snapshot at the commit shown. The owner has not been contacted yet; corrections are welcome as an issue.
+**Status:** reviewed by hand; a snapshot at the commit shown. The owner was notified on 2026-10-07 (https://github.com/davila7/claude-code-templates/issues/1118); corrections are welcome as an issue.
 **Commit:** 3c28e46 (2026-09-23) · **Scanner:** 4d67412 · **Reviewed:** 2026-10-06
 **Repo:** 32,424 stars · license MIT · last push 2026-10-06 (GitHub API, 2026-10-06)
 

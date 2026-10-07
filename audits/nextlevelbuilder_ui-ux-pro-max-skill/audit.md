@@ -1,6 +1,6 @@
 # nextlevelbuilder/ui-ux-pro-max-skill — what runs without asking
 
-**Status:** reviewed by hand; a snapshot at the commit shown. The owner has not been contacted yet; corrections are welcome as an issue.
+**Status:** reviewed by hand; a snapshot at the commit shown. The owner was notified on 2026-10-07 (https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/issues/514); corrections are welcome as an issue.
 **Commit:** dcc40ff (2026-09-21) · **Scanner:** 4d67412 · **Reviewed:** 2026-10-06
 **Repo:** 133,544 stars · license MIT · last push 2026-10-03 (GitHub API, 2026-10-06)
 

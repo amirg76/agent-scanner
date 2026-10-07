@@ -1,6 +1,6 @@
 # Audits — what runs without asking
 
-**Status:** snapshot at the commits shown. Owners have not been contacted yet; corrections are welcome as an issue.
+**Status:** snapshot at the commits shown. 4 of 20 owners were notified by an issue (linked in each audit); the others have not been contacted. Corrections are welcome as an issue.
 
 20 repos. 5 declare nothing that runs on its own. Across all of them: 270 hooks (34 with inline code), 83 MCP servers, 31 hooks or servers that run a registry package without a pinned version, 6 npm install-time scripts, 9 installer targets with no backup code and 4 installers whose writes were not traced by the scanner (see each audit for the manual check), 4 high-level findings.
 

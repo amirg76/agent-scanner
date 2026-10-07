@@ -1,6 +1,6 @@
 # ruvnet/ruflo — what runs without asking
 
-**Status:** reviewed by hand; a snapshot at the commit shown. The owner has not been contacted yet; corrections are welcome as an issue.
+**Status:** reviewed by hand; a snapshot at the commit shown. The owner was notified on 2026-10-07 (https://github.com/ruvnet/ruflo/issues/3888); corrections are welcome as an issue.
 **Commit:** 0a96fb8 (2026-09-23) · **Scanner:** 4d67412 · **Reviewed:** 2026-10-06
 **Repo:** 73,999 stars · license MIT · last push 2026-10-06 (GitHub API, 2026-10-06)
 
