@@ -128,6 +128,10 @@ The scanner lists 131 items as not checked; anything declared in them is not in 
 - `v3/@claude-flow/browser/package.json` has a postinstall that, only if `agent-browser` is not already installed, runs `npm install -g agent-browser@latest`.
 - Both project settings files configure a status-line command.
 
+## Owner response
+
+2026-10-07, on the notification issue (ruvnet/ruflo#3888): a contributor, nicholas-ruest, confirmed that the file is not valid JSON and proposed a fix with a regression test that checks the file parses, in ruvnet/ruflo#3895. The decoded shell commands are unchanged. Not yet merged when this was written.
+
 ## What is fine
 
 - No project settings that redirect API traffic.

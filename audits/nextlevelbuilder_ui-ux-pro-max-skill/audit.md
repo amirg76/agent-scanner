@@ -32,6 +32,10 @@ No hooks, nothing to check.
 
 `stack/README.md` calls it "a ready-to-clone Claude Code project" and says "the MCP servers and CLAUDE.md workflow load automatically". `enableAllProjectMcpServers` was part of CVE-2025-59536, in which such servers could start before the user accepted the project; Claude Code has since fixed that (Check Point Research).
 
+## Owner response
+
+2026-10-07, on the notification issue (nextlevelbuilder/ui-ux-pro-max-skill#514): a contributor, clark-cant, checked both points against `main` and wrote "they're accurate". They plan to state in the README that `enableAllProjectMcpServers` is a pre-approval and how to restore the per-server prompt, and called pinning the three servers "a fair follow-up".
+
 ## What is fine
 
 - No project settings that configure a command (status line, credential helpers).

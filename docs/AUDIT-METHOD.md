@@ -48,7 +48,7 @@ reference scripts but where zero scripts were searched means the draft did not f
 5. State what was not checked.
 
 Every audit has the same sections: Summary, What runs without asking (generated), Network calls in hook
-code (generated), Checked by hand (when files were read), Not read by the scanner (when the scan had
+code (generated), Checked by hand (when files were read), Owner response (when someone from the project replied), Not read by the scanner (when the scan had
 errors or skipped files, with a note on what they contain), What is fine (generated), Is it documented?,
 Recommendations for users, Limits. The status line says whether the audit was reviewed by hand.
 
