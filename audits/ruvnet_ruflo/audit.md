@@ -130,7 +130,7 @@ The scanner lists 131 items as not checked; anything declared in them is not in 
 
 ## Owner response
 
-2026-10-07, on the notification issue (ruvnet/ruflo#3888): a contributor, nicholas-ruest, confirmed that the file is not valid JSON and proposed a fix with a regression test that checks the file parses, in ruvnet/ruflo#3895. The decoded shell commands are unchanged. Not yet merged when this was written.
+**Fixed.** On the notification issue (ruvnet/ruflo#3888), a contributor, nicholas-ruest, proposed a fix with a regression test on 2026-10-07 (ruvnet/ruflo#3895). On 2026-10-08 the owner, ruvnet, released it in ruflo 3.56.0 and closed the issue: "The shipped settings.json now parses", and a new test checks that every shipped settings and plugin JSON file parses. The file on `main` parses as of 2026-10-09. This audit describes the earlier commit shown above.
 
 ## What is fine
 
