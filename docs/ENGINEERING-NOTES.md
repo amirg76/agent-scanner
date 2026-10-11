@@ -38,8 +38,8 @@ Final state: 24 fixtures, 121 tests, CI on Linux, Windows and macOS.
    Test paths are excluded.
 5. **The real installer was missed.** ECC builds the target path in one module and copies in another.
    A per-file heuristic cannot see both. Instead of guessing, such an installer is now reported with
-   `traced: false` and `backup: null`, and the audit checks it by hand (ECC: `copyFileSync`, no backup,
-   confirmed).
+   `traced: false` and `backup: null`, and the audit checks it by hand. (For ECC that hand check was
+   itself wrong at first; see "Mistakes in the audit text itself".)
 6. **9 of 14 MCP servers in the official marketplace were invisible.** Plugin `.mcp.json` files often
    omit the `mcpServers` wrapper. Both shapes are read now.
 7. **The regex matcher `.*` was not described as "every tool".** Only `*` was.
@@ -74,8 +74,8 @@ Final state: 24 fixtures, 121 tests, CI on Linux, Windows and macOS.
 17. **"Each run fetches the current version" overstated it too.** `npx tsc` uses a local install when
     one exists; only a dist-tag such as `@latest` resolves the registry on every run. The two cases are
     worded differently now.
-18. **The audit index showed 0 "installer, no backup" for ECC**, whose overwrite was confirmed by hand,
-    because its installer is `traced: false`. The index has a separate "not traced" column.
+18. **The audit index showed 0 "installer, no backup" for ECC**, whose installer was being checked by
+    hand, because it is `traced: false`. The index has a separate "not traced" column.
 
 ## Found by code review (1)
 
@@ -291,6 +291,13 @@ Five counts in the hand-written parts of audits were first written by eye and we
 (13 for 12, 25 for 19, "four" for three, "three plugin configs" for four hook files and two settings
 files, 8 for 7). All were caught by checking against `scan.json`. Since then every number in an audit
 is produced by a command, and a sentence that was not checked says so ("Not checked in this pass").
+After publication, an owner corrected one. The ECC audit said its installer replaces a user's file of
+the same name with no backup, from reading `apply.js` alone; a collaborator pointed to a guard in a third
+module, `ownership-guard.js`, present at the audited commit, that skips existing files the installer did
+not record as its own. The notification had been phrased as a question for this reason. The audit was
+corrected openly and quotes the reply. A hand check of a `traced: false` installer now has to follow
+every module the copy step calls before it states an outcome.
+
 The fourth review found two more, both in text read by hand from a target: "six events" for seven in a
 file the scanner could not parse, and a paraphrased code quote.
 

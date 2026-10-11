@@ -156,8 +156,10 @@ A script that writes into the agent's configuration folder (`~/.claude`).
 - **attention**, `traced: false`: the script names `~/.claude` but writes in another file; the scanner
   could not confirm either way. Check by hand.
 - **info**: backup-related code found (heuristic).
-- Why it matters: in the ECC audit, the installer's `copyFileSync` replaces a user's skill that has the
-  same name as one of ECC's, with no backup.
+- Why it matters: an installer that replaces a file of the same name loses the user's edits. Whether it
+  does can depend on code the heuristic does not see: ECC's copy step looked unguarded, but a separate
+  module skips existing files the installer did not record as its own. That is why `traced: false` is
+  checked by hand, following every module the copy step calls.
 
 ## Sources
 
